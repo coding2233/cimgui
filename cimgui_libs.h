@@ -41,5 +41,6 @@ CIMGUI_API TextEditor* igNewTextEditor();
 CIMGUI_API void igDeleteTextEditor(TextEditor* text_editor);
 CIMGUI_API void igRenderTextEditor(TextEditor* text_editor,const char* aTitle, const ImVec2 aSize = ImVec2(), bool aBorder = false);
 CIMGUI_API void igSetTextEditor(TextEditor* text_editor,const char* text);
+CIMGUI_API void igSetPaletteTextEditor(TextEditor* text_editor,int style);
 
 #endif
