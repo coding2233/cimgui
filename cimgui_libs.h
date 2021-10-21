@@ -37,8 +37,9 @@ typedef unsigned __int64 ImU64;
 //typedef unsigned long long ImU64;
 #endif
 
-CIMGUI_API TextEditor* igNewTextEditor(const char* text);
+CIMGUI_API TextEditor* igNewTextEditor();
 CIMGUI_API void igDeleteTextEditor(TextEditor* text_editor);
-CIMGUI_API void igTextEditorRender(TextEditor* text_editor,const char* aTitle, const ImVec2 aSize = ImVec2(), bool aBorder = false);
+CIMGUI_API void igRenderTextEditor(TextEditor* text_editor,const char* aTitle, const ImVec2 aSize = ImVec2(), bool aBorder = false);
+CIMGUI_API void igSetTextEditor(TextEditor* text_editor,const char* text);
 
 #endif
