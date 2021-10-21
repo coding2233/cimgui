@@ -2,12 +2,16 @@ cmake_minimum_required(VERSION 3.1)
 
 project(cimgui)
 
+set(CMAKE_CXX_STANDARD 17)
+
 if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/imgui/imgui_tables.cpp)
 	set(TABLES_SOURCE "imgui/imgui_tables.cpp")
 else()
 	set(TABLES_SOURCE "")
 endif()
 
+file(GLOB_RECURSE LIB_SOURCE cimgui_libs.h cimgui_libs.cpp
+    "libs/*.*")
 
 #general settings
 file(GLOB IMGUI_SOURCES
@@ -17,6 +21,7 @@ file(GLOB IMGUI_SOURCES
     imgui/imgui_demo.cpp
     imgui/imgui_widgets.cpp
 	${TABLES_SOURCE}
+    ${LIB_SOURCE}
 )
 
 set(IMGUI_STATIC "no" CACHE STRING "Build as a static library")

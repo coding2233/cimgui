@@ -1,0 +1,61 @@
+name: CI-FOR-MAIN
+
+on: 
+  push:
+    branches:
+      - libs
+
+jobs:
+  build-cimgui-libs-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+    - name: build
+      run: |
+        export SRC=./
+        export BUILD=build
+        cmake --no-warn-unused-cli -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -DCMAKE_BUILD_TYPE=Release -S ${SRC} -B ${SRC}/${BUILD} && cmake --build ${SRC}/${BUILD} -j 10
+        ls -alh ${BUILD}
+    - name: Expose as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: cimgui-libs-linux
+        path: build/cimgui.so
+
+  build-cimgui-libs-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+    - name: build
+      run: |
+        md build
+        cmake --no-warn-unused-cli -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -S ./ -B build
+        cmake --build build/ --config Release --target cimgui
+        dir build\Release
+    - name: Expose as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: cimgui-libs-windows
+        path: build/Release/cimgui.dll
+  
+  build-cimgui-libs-osx:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+    - name: build
+      run: |
+        export SRC=./
+        export BUILD=build
+        cmake --no-warn-unused-cli -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true -DCMAKE_BUILD_TYPE=Release -S ${SRC} -B ${SRC}/${BUILD} && cmake --build ${SRC}/${BUILD} -j 10
+        ls -alh ${BUILD}/
+    - name: Expose as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: cimgui-libs-osx
+        path: build/cimgui.dylib
