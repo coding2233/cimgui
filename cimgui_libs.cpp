@@ -40,3 +40,13 @@ CIMGUI_API void igSetPaletteTextEditor(TextEditor* text_editor,int style)
         break;
     }
 }
+
+CIMGUI_API void igSetReadOnlyTextEditor(TextEditor* text_editor,bool readOnly)
+{
+    text_editor->SetReadOnly(readOnly);
+}
+
+CIMGUI_API void igSetShowWhitespacesTextEditor(TextEditor* text_editor,bool show)
+{
+    text_editor->SetShowWhitespaces(show);
+}
