@@ -2111,7 +2111,7 @@ const TextEditor::Palette & TextEditor::GetRetroBluePalette()
 
 const TextEditor::Palette & TextEditor::GetCustomPalette(ImU32* colors)
 {
-	const static Palette p = { {
+	const Palette customPalette = { {
 			colors[0],	// None
 			colors[1],	// Keyword	
 			colors[2],	// Number
@@ -2133,9 +2133,10 @@ const TextEditor::Palette & TextEditor::GetCustomPalette(ImU32* colors)
 			colors[18], // Current line fill
 			colors[19], // Current line fill (inactive)
 			colors[20], // Current line edge
-			colors[21], // Current line edge
+			colors[21], // lag line
 		} };
-	return p;
+		mCustomPalette=customPalette;
+	return mCustomPalette;
 }
 
 std::string TextEditor::GetText() const

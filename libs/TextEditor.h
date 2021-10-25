@@ -270,7 +270,7 @@ public:
 	static const Palette& GetDarkPalette();
 	static const Palette& GetLightPalette();
 	static const Palette& GetRetroBluePalette();
-	static const Palette& GetCustomPalette(ImU32 *colors);
+	const Palette& GetCustomPalette(ImU32 *colors);
 private:
 	typedef std::vector<std::pair<std::regex, PaletteIndex>> RegexList;
 
@@ -393,4 +393,5 @@ private:
 	float mLastClick;
 
 	std::vector<int>  mFlagLines;
+	Palette mCustomPalette;
 };

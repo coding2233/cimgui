@@ -6,7 +6,6 @@ CIMGUI_API TextEditor* igNewTextEditor()
     return text_editor;
 }
 
-
 CIMGUI_API void igDeleteTextEditor(TextEditor* text_editor)
 {
     delete text_editor;
@@ -67,5 +66,5 @@ CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* 
 {
     if(size<22)
         return;
-    text_editor->SetPalette(TextEditor::GetCustomPalette(colors));
+    text_editor->SetPalette(text_editor->GetCustomPalette(colors));
 }
