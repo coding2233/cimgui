@@ -37,6 +37,7 @@ public:
 		CurrentLineFill,
 		CurrentLineFillInactive,
 		CurrentLineEdge,
+		FlagLine,
 		Max
 	};
 
@@ -263,10 +264,13 @@ public:
 	void Undo(int aSteps = 1);
 	void Redo(int aSteps = 1);
 
+	void SetFlagLines(std::vector<int> flagLines);
+	bool TextEditor::FindFlagLine(int lineIndex) const;
+
 	static const Palette& GetDarkPalette();
 	static const Palette& GetLightPalette();
 	static const Palette& GetRetroBluePalette();
-
+	static const Palette& GetCustomPalette(ImU32 *colors);
 private:
 	typedef std::vector<std::pair<std::regex, PaletteIndex>> RegexList;
 
@@ -387,4 +391,6 @@ private:
 	uint64_t mStartTime;
 
 	float mLastClick;
+
+	std::vector<int>  mFlagLines;
 };

@@ -50,3 +50,22 @@ CIMGUI_API void igSetShowWhitespacesTextEditor(TextEditor* text_editor,bool show
 {
     text_editor->SetShowWhitespaces(show);
 }
+
+CIMGUI_API void igSetFlagLinesTextEditor(TextEditor* text_editor,int* lines,int size)
+{
+    std::vector<int> flagLines;
+
+    for (size_t i = 0; i < size; i++)
+    {
+        flagLines.push_back(lines[i]);
+    }
+
+    text_editor->SetFlagLines(flagLines);
+}
+
+CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* colors,int size)
+{
+    if(size<22)
+        return;
+    text_editor->SetPalette(TextEditor::GetCustomPalette(colors));
+}

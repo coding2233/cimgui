@@ -961,6 +961,14 @@ void TextEditor::Render()
 			auto lineNoWidth = ImGui::GetFont()->CalcTextSizeA(ImGui::GetFontSize(), FLT_MAX, -1.0f, buf, nullptr, nullptr).x;
 			drawList->AddText(ImVec2(lineStartScreenPos.x + mTextStart - lineNoWidth, lineStartScreenPos.y), mPalette[(int)PaletteIndex::LineNumber], buf);
 
+			//Draw flag lines.
+			if (FindFlagLine(lineNo))
+			{
+				auto lineEndPos = ImVec2(start.x + contentSize.x + scrollX, start.y + mCharAdvance.y);
+				drawList->AddRectFilled(start, lineEndPos,mPalette[(int)PaletteIndex::FlagLine]);
+				// drawList->AddRect(start, lineEndPos, mPalette[(int)PaletteIndex::CurrentLineEdge], 1.0f);
+			}
+
 			if (mState.mCursorPosition.mLine == lineNo)
 			{
 				auto focused = ImGui::IsWindowFocused();
@@ -2003,6 +2011,17 @@ void TextEditor::Redo(int aSteps)
 		mUndoBuffer[mUndoIndex++].Redo(this);
 }
 
+void TextEditor::SetFlagLines(std::vector<int> flagLines)
+{
+	mFlagLines = flagLines;
+}
+
+bool TextEditor::FindFlagLine(int lineIndex) const
+{
+	const bool found = mFlagLines.end() != std::find(mFlagLines.begin(), mFlagLines.end(), lineIndex);
+	return found;
+}
+
 const TextEditor::Palette & TextEditor::GetDarkPalette()
 {
 	const static Palette p = { {
@@ -2027,6 +2046,7 @@ const TextEditor::Palette & TextEditor::GetDarkPalette()
 			0x40000000, // Current line fill
 			0x40808080, // Current line fill (inactive)
 			0x40a0a0a0, // Current line edge
+			0x33ccffcc, // Flag line
 		} };
 	return p;
 }
@@ -2055,6 +2075,7 @@ const TextEditor::Palette & TextEditor::GetLightPalette()
 			0x40000000, // Current line fill
 			0x40808080, // Current line fill (inactive)
 			0x40000000, // Current line edge
+			0x333333cc, // Flag line
 		} };
 	return p;
 }
@@ -2083,10 +2104,39 @@ const TextEditor::Palette & TextEditor::GetRetroBluePalette()
 			0x40000000, // Current line fill
 			0x40808080, // Current line fill (inactive)
 			0x40000000, // Current line edge
+			0x33ccffcc, // Flag line
 		} };
 	return p;
 }
 
+const TextEditor::Palette & TextEditor::GetCustomPalette(ImU32* colors)
+{
+	const static Palette p = { {
+			colors[0],	// None
+			colors[1],	// Keyword	
+			colors[2],	// Number
+			colors[3],	// String
+			colors[4], // Char literal
+			colors[5], // Punctuation
+			colors[6],	// Preprocessor
+			colors[7], // Identifier
+			colors[8], // Known identifier
+			colors[9], // Preproc identifier
+			colors[10], // Comment (single line)
+			colors[11], // Comment (multi line)
+			colors[12], // Background
+			colors[13], // Cursor
+			colors[14], // Selection
+			colors[15], // ErrorMarker
+			colors[16], // Breakpoint
+			colors[17], // Line number
+			colors[18], // Current line fill
+			colors[19], // Current line fill (inactive)
+			colors[20], // Current line edge
+			colors[21], // Current line edge
+		} };
+	return p;
+}
 
 std::string TextEditor::GetText() const
 {
