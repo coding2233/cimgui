@@ -4451,6 +4451,8 @@ IMGUIFILEDIALOG_API void IGFD_Selection_DestroyContent(IGFD_Selection* vSelectio
 // create an instance of ImGuiFileDialog
 IMGUIFILEDIALOG_API ImGuiFileDialog* IGFD_Create(void)
 {
+	setlocale(LC_ALL, ".UTF8");
+	_wsetlocale(LC_ALL, L".UTF8");
 	return new ImGuiFileDialog();
 }
 
