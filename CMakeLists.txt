@@ -13,6 +13,8 @@ endif()
 file(GLOB_RECURSE LIB_SOURCE cimgui_libs.h cimgui_libs.cpp
     "libs/*.*")
 
+message("libs scripts. "${LIB_SOURCE})
+
 #general settings
 file(GLOB IMGUI_SOURCES
     cimgui.cpp

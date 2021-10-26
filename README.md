@@ -119,3 +119,4 @@ Notes:
 # Third-party components or plug-ins
 
 * [ImGuiColorTextEdit](https://github.com/BalazsJako/ImGuiColorTextEdit)
+* [ImGuiFileDialog](https://github.com/aiekick/ImGuiFileDialog)
