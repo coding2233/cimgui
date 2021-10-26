@@ -68,3 +68,14 @@ CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* 
         return;
     text_editor->SetPalette(text_editor->GetCustomPalette(colors));
 }
+
+IMGUIFILEDIALOG_API char* IGFD_SelectionFilePath(ImGuiFileDialog* vContext)
+{
+    char* selectionPathName = "";
+    auto selection =IGFD_GetSelection(vContext);
+    if(selection.count>0)
+    {
+        selectionPathName=selection.table[0].filePathName;
+    }
+    return selectionPathName;
+}

@@ -2,6 +2,7 @@
 #define __CIMGUI_LIBS_H__
 
 #include "libs/TextEditor.h"
+#include "libs/ImGuiFileDialog/ImGuiFileDialog.h"
 
 #include <stdio.h>
 #include <stdint.h>
@@ -46,5 +47,8 @@ CIMGUI_API void igSetReadOnlyTextEditor(TextEditor* text_editor,bool readOnly);
 CIMGUI_API void igSetShowWhitespacesTextEditor(TextEditor* text_editor,bool show);
 CIMGUI_API void igSetFlagLinesTextEditor(TextEditor* text_editor,int* lines,int size);
 CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* colors,int size);
+
+
+IMGUIFILEDIALOG_API char* IGFD_SelectionFilePath(ImGuiFileDialog* vContext);
 
 #endif
