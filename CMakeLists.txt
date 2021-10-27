@@ -15,7 +15,7 @@ file(GLOB_RECURSE LIB_SOURCE cimgui_libs.h cimgui_libs.cpp
 
 message("libs scripts. "${LIB_SOURCE})
 
-add_definitions("-DUSE_STD_FILESYSTEM")
+add_definitions("-DUSE_STD_FILESYSTEM -DUSE_THUMBNAILS")
 
 #general settings
 file(GLOB IMGUI_SOURCES
