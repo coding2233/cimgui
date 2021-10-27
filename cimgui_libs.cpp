@@ -69,6 +69,11 @@ CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* 
     text_editor->SetPalette(text_editor->GetCustomPalette(colors));
 }
 
+CIMGUI_API void igIgnoreChildTextEditor(TextEditor* text_editor,bool ignore)
+{
+    text_editor->SetImGuiChildIgnored(ignore);
+}
+
 IMGUIFILEDIALOG_API char* IGFD_SelectionFilePath(ImGuiFileDialog* vContext)
 {
     char* selectionPathName = "";

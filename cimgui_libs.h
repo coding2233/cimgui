@@ -47,6 +47,7 @@ CIMGUI_API void igSetReadOnlyTextEditor(TextEditor* text_editor,bool readOnly);
 CIMGUI_API void igSetShowWhitespacesTextEditor(TextEditor* text_editor,bool show);
 CIMGUI_API void igSetFlagLinesTextEditor(TextEditor* text_editor,int* lines,int size);
 CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* colors,int size);
+CIMGUI_API void igIgnoreChildTextEditor(TextEditor* text_editor,bool ignore);
 
 
 IMGUIFILEDIALOG_API char* IGFD_SelectionFilePath(ImGuiFileDialog* vContext);
