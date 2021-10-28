@@ -21,6 +21,11 @@ CIMGUI_API void igSetTextEditor(TextEditor* text_editor,const char* text)
     text_editor->SetText(text);
 }
 
+CIMGUI_API const char* igGetTextEditor(TextEditor* text_editor)
+{
+    return text_editor->GetText().c_str();
+}
+
 CIMGUI_API void igSetPaletteTextEditor(TextEditor* text_editor,int style)
 {
     switch (style)
@@ -74,10 +79,12 @@ CIMGUI_API void igIgnoreChildTextEditor(TextEditor* text_editor,bool ignore)
     text_editor->SetImGuiChildIgnored(ignore);
 }
 
-CIMGUI_API ImVec2 igGetCursorPositionTextEditor(TextEditor* text_editor)
+CIMGUI_API int* igGetCursorPositionTextEditor(TextEditor* text_editor)
 {
     auto cursorPos = text_editor->GetCursorPosition();
-    ImVec2 position= ImVec2(cursorPos.mLine,cursorPos.mColumn);
+    int position[2];
+    position[0]=cursorPos.mLine;
+    position[1]=cursorPos.mColumn;
     return position;
 }
 CIMGUI_API int igGetTotalLinesTextEditor(TextEditor* text_editor)
