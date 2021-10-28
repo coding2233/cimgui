@@ -67,6 +67,18 @@ CIMGUI_API void igSetFlagLinesTextEditor(TextEditor* text_editor,int* lines,int 
     text_editor->SetFlagLines(flagLines);
 }
 
+CIMGUI_API void igSetFlagPointsTextEditor(TextEditor* text_editor,int* points,int size,const char* flagPointText,const char* flagPointTipText)
+{
+    std::vector<int> flagPoints;
+
+    for (size_t i = 0; i < size; i++)
+    {
+        flagPoints.push_back(points[i]);
+    }
+
+    text_editor->SetFlagPoints(flagPoints,flagPointText,flagPointTipText);
+}
+
 CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* colors,int size)
 {
     if(size<22)

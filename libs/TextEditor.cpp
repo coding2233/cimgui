@@ -934,6 +934,7 @@ void TextEditor::Render()
 				drawList->AddRectFilled(start, end, mPalette[(int)PaletteIndex::Breakpoint]);
 			}
 
+
 			// Draw error markers
 			auto errorIt = mErrorMarkers.find(lineNo + 1);
 			if (errorIt != mErrorMarkers.end())
@@ -967,6 +968,19 @@ void TextEditor::Render()
 				auto lineEndPos = ImVec2(start.x + contentSize.x + scrollX, start.y + mCharAdvance.y);
 				drawList->AddRectFilled(start, lineEndPos,mPalette[(int)PaletteIndex::FlagLine]);
 				// drawList->AddRect(start, lineEndPos, mPalette[(int)PaletteIndex::CurrentLineEdge], 1.0f);
+			}
+
+			if(FindFlagPoint(lineNo))
+			{
+				// drawList->AddText(ImVec2(lineStartScreenPos.x + mTextStart - lineNoWidth, lineStartScreenPos.y), mPalette[(int)PaletteIndex::LineNumber], mFlagPointText);
+				// if(ImGui::IsItemHovered())
+				// {
+				// 	ImGui::BeginTooltip();
+				// 	ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+				// 	ImGui::TextUnformatted(mFlagPointTipText);
+				// 	ImGui::PopTextWrapPos();
+				// 	ImGui::EndTooltip();
+				// }
 			}
 
 			if (mState.mCursorPosition.mLine == lineNo)
@@ -2016,9 +2030,22 @@ void TextEditor::SetFlagLines(std::vector<int> flagLines)
 	mFlagLines = flagLines;
 }
 
+void TextEditor::SetFlagPoints(std::vector<int> flagPoints,const char* flagPointText,const char* flagPointTipText)
+{
+	mFlagPoints = flagPoints;
+	mFlagPointText=flagPointText;
+	mFlagPointTipText=flagPointTipText;
+}
+
 bool TextEditor::FindFlagLine(int lineIndex) const
 {
 	const bool found = mFlagLines.end() != std::find(mFlagLines.begin(), mFlagLines.end(), lineIndex);
+	return found;
+}
+
+bool TextEditor::FindFlagPoint(int lineIndex) const
+{
+	const bool found = mFlagPoints.end() != std::find(mFlagPoints.begin(), mFlagPoints.end(), lineIndex);
 	return found;
 }
 
