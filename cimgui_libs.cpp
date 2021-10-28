@@ -74,6 +74,29 @@ CIMGUI_API void igIgnoreChildTextEditor(TextEditor* text_editor,bool ignore)
     text_editor->SetImGuiChildIgnored(ignore);
 }
 
+CIMGUI_API ImVec2 igGetCursorPositionTextEditor(TextEditor* text_editor)
+{
+    auto cursorPos = text_editor->GetCursorPosition();
+    ImVec2 position= ImVec2(cursorPos.mLine,cursorPos.mColumn);
+    return position;
+}
+CIMGUI_API int igGetTotalLinesTextEditor(TextEditor* text_editor)
+{
+    return text_editor->GetTotalLines();
+}
+CIMGUI_API bool igIsOverwriteTextEditor(TextEditor* text_editor)
+{
+    return text_editor->IsOverwrite();
+}
+CIMGUI_API bool igCanUndoTextEditor(TextEditor* text_editor)
+{
+    return text_editor->CanUndo();
+}
+CIMGUI_API bool igIsTextChangedTextEditor(TextEditor* text_editor)
+{
+    return text_editor->IsTextChanged();
+}
+
 IMGUIFILEDIALOG_API char* IGFD_SelectionFilePath(ImGuiFileDialog* vContext)
 {
     char* selectionPathName = "";
