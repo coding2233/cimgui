@@ -972,15 +972,18 @@ void TextEditor::Render()
 
 			if(FindFlagPoint(lineNo))
 			{
-				// drawList->AddText(ImVec2(lineStartScreenPos.x + mTextStart - lineNoWidth, lineStartScreenPos.y), mPalette[(int)PaletteIndex::LineNumber], mFlagPointText);
-				// if(ImGui::IsItemHovered())
-				// {
-				// 	ImGui::BeginTooltip();
-				// 	ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
-				// 	ImGui::TextUnformatted(mFlagPointTipText);
-				// 	ImGui::PopTextWrapPos();
-				// 	ImGui::EndTooltip();
-				// }
+				auto pStart = ImVec2(lineStartScreenPos.x + mTextStart - lineNoWidth-10, lineStartScreenPos.y);
+				auto pEnd = ImVec2(pStart.x+50,pStart.y+50);
+				drawList->AddRectFilled(start, pEnd,mPalette[(int)PaletteIndex::LineNumber]);
+				 drawList->AddText(pStart, mPalette[(int)PaletteIndex::LineNumber], "?");
+				if(ImGui::IsMouseHoveringRect(pStart,pEnd))
+				{
+					ImGui::BeginTooltip();
+					ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+					ImGui::TextUnformatted("Copy the section to the other side.");
+					ImGui::PopTextWrapPos();
+					ImGui::EndTooltip();
+				}
 			}
 
 			if (mState.mCursorPosition.mLine == lineNo)
