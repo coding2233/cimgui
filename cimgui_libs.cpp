@@ -91,13 +91,14 @@ CIMGUI_API void igIgnoreChildTextEditor(TextEditor* text_editor,bool ignore)
     text_editor->SetImGuiChildIgnored(ignore);
 }
 
-CIMGUI_API int* igGetCursorPositionTextEditor(TextEditor* text_editor)
+CIMGUI_API TextEditor::Coordinates* igGetCursorPositionTextEditor(TextEditor* text_editor)
 {
     auto cursorPos = text_editor->GetCursorPosition();
-    int position[2];
-    position[0]=cursorPos.mLine;
-    position[1]=cursorPos.mColumn;
-    return position;
+    // int position[2];
+    // position[0]=cursorPos.mLine;
+    // position[1]=cursorPos.mColumn;
+    // return position;
+    return &cursorPos;
 }
 CIMGUI_API int igGetTotalLinesTextEditor(TextEditor* text_editor)
 {

@@ -50,7 +50,7 @@ CIMGUI_API void igSetFlagLinesTextEditor(TextEditor* text_editor,int* lines,int 
 CIMGUI_API void igSetFlagPointsTextEditor(TextEditor* text_editor,int* points,int size,const char* flagPointText,const char* flagPointTipText);
 CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* colors,int size);
 CIMGUI_API void igIgnoreChildTextEditor(TextEditor* text_editor,bool ignore);
-CIMGUI_API int* igGetCursorPositionTextEditor(TextEditor* text_editor);
+CIMGUI_API TextEditor::Coordinates* igGetCursorPositionTextEditor(TextEditor* text_editor);
 CIMGUI_API int igGetTotalLinesTextEditor(TextEditor* text_editor);
 CIMGUI_API bool igIsOverwriteTextEditor(TextEditor* text_editor);
 CIMGUI_API bool igCanUndoTextEditor(TextEditor* text_editor);
