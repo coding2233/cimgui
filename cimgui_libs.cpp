@@ -67,7 +67,7 @@ CIMGUI_API void igSetFlagLinesTextEditor(TextEditor* text_editor,int* lines,int 
     text_editor->SetFlagLines(flagLines);
 }
 
-CIMGUI_API void igSetFlagPointsTextEditor(TextEditor* text_editor,int* points,int size,const char* flagPointText,const char* flagPointTipText)
+CIMGUI_API void igSetFlagPointsTextEditor(TextEditor* text_editor,int* points,int size)
 {
     std::vector<int> flagPoints;
 
@@ -76,7 +76,7 @@ CIMGUI_API void igSetFlagPointsTextEditor(TextEditor* text_editor,int* points,in
         flagPoints.push_back(points[i]);
     }
 
-    text_editor->SetFlagPoints(flagPoints,flagPointText,flagPointTipText);
+    text_editor->SetFlagPoints(flagPoints);
 }
 
 CIMGUI_API bool igGetFlagPointRectTextEditor(TextEditor* text_editor,int lineNo,ImVec4* rect)

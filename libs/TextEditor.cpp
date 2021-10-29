@@ -967,25 +967,24 @@ void TextEditor::Render()
 			//Draw flag lines.
 			if (FindFlagLine(lineNo))
 			{
-				auto lineEndPos = ImVec2(start.x + contentSize.x + scrollX, start.y + mCharAdvance.y);
-				drawList->AddRectFilled(start, lineEndPos,mPalette[(int)PaletteIndex::FlagLine]);
-				// drawList->AddRect(start, lineEndPos, mPalette[(int)PaletteIndex::CurrentLineEdge], 1.0f);
+				auto flagLineEndPos = ImVec2(start.x + contentSize.x + scrollX, start.y + mCharAdvance.y);
+				drawList->AddRectFilled(start, flagLineEndPos,mPalette[(int)PaletteIndex::FlagLine]);
 			}
 
 			if(FindFlagPoint(lineNo))
 			{
 				auto pStart = ImVec2(lineStartScreenPos.x + mTextStart - lineNoWidth-mCharAdvance.x, lineStartScreenPos.y);
 				auto pEnd = ImVec2(pStart.x+mCharAdvance.x,pStart.y+mCharAdvance.y);
-				drawList->AddRectFilled(start, pEnd,mPalette[(int)PaletteIndex::LineNumber]);
+				// drawList->AddRectFilled(start, pEnd,mPalette[(int)PaletteIndex::LineNumber]);
 				//  drawList->AddText(pStart, mPalette[(int)PaletteIndex::LineNumber], "?");
-				if(ImGui::IsMouseHoveringRect(pStart,pEnd))
-				{
-					ImGui::BeginTooltip();
-					ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
-					ImGui::TextUnformatted("Copy the section to the other side.");
-					ImGui::PopTextWrapPos();
-					ImGui::EndTooltip();
-				}
+				// if(ImGui::IsMouseHoveringRect(pStart,pEnd))
+				// {
+				// 	ImGui::BeginTooltip();
+				// 	ImGui::PushTextWrapPos(ImGui::GetFontSize() * 35.0f);
+				// 	ImGui::TextUnformatted("Copy the section to the other side.");
+				// 	ImGui::PopTextWrapPos();
+				// 	ImGui::EndTooltip();
+				// }
 				ImVec4 flagPointRect(pStart.x,pStart.y,pEnd.x,pEnd.y);
 				mFlagPointRects.insert(std::make_pair(lineNo,flagPointRect));
 			}
@@ -2037,11 +2036,9 @@ void TextEditor::SetFlagLines(std::vector<int> flagLines)
 	mFlagLines = flagLines;
 }
 
-void TextEditor::SetFlagPoints(std::vector<int> flagPoints,const char* flagPointText,const char* flagPointTipText)
+void TextEditor::SetFlagPoints(std::vector<int> flagPoints)
 {
 	mFlagPoints = flagPoints;
-	mFlagPointText=flagPointText;
-	mFlagPointTipText=flagPointTipText;
 }
 
 bool TextEditor::FindFlagLine(int lineIndex) const

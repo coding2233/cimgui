@@ -266,7 +266,7 @@ public:
 	void Redo(int aSteps = 1);
 
 	void SetFlagLines(std::vector<int> flagLines);
-	void TextEditor::SetFlagPoints(std::vector<int> flagPoints,const char* flagPointText,const char* flagPointTipText);
+	void TextEditor::SetFlagPoints(std::vector<int> flagPoints);
 
 	bool TextEditor::FindFlagLine(int lineIndex) const;
 	bool TextEditor::FindFlagPoint(int lineIndex) const;
@@ -401,8 +401,5 @@ private:
 	Palette mCustomPalette;
 
 	std::vector<int> mFlagPoints;
-	const char* mFlagPointText;
-	const char* mFlagPointTipText;
-	
 	std::map<int,ImVec4> mFlagPointRects;
 };
