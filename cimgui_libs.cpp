@@ -79,6 +79,11 @@ CIMGUI_API void igSetFlagPointsTextEditor(TextEditor* text_editor,int* points,in
     text_editor->SetFlagPoints(flagPoints,flagPointText,flagPointTipText);
 }
 
+CIMGUI_API bool igGetFlagPointRectTextEditor(TextEditor* text_editor,int lineNo,ImVec4* rect)
+{
+    return text_editor->FindFlagPointRect(lineNo,rect);
+}
+
 CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* colors,int size)
 {
     if(size<22)

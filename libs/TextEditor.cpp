@@ -890,6 +890,8 @@ void TextEditor::Render()
 	snprintf(buf, 16, " %d ", globalLineMax);
 	mTextStart = ImGui::GetFont()->CalcTextSizeA(ImGui::GetFontSize(), FLT_MAX, -1.0f, buf, nullptr, nullptr).x + mLeftMargin;
 
+	mFlagPointRects.clear();
+
 	if (!mLines.empty())
 	{
 		float spaceSize = ImGui::GetFont()->CalcTextSizeA(ImGui::GetFontSize(), FLT_MAX, -1.0f, " ", nullptr, nullptr).x;
@@ -984,6 +986,8 @@ void TextEditor::Render()
 					ImGui::PopTextWrapPos();
 					ImGui::EndTooltip();
 				}
+				ImVec4 flagPointRect(pStart.x,pStart.y,pEnd.x,pEnd.y);
+				mFlagPointRects.insert(std::make_pair(lineNo,flagPointRect));
 			}
 
 			if (mState.mCursorPosition.mLine == lineNo)
@@ -2050,6 +2054,18 @@ bool TextEditor::FindFlagPoint(int lineIndex) const
 {
 	const bool found = mFlagPoints.end() != std::find(mFlagPoints.begin(), mFlagPoints.end(), lineIndex);
 	return found;
+}
+
+	
+bool TextEditor::FindFlagPointRect(int lineNo,ImVec4* rect) const
+{
+	auto result = mFlagPointRects.find(lineNo);
+	if(result!=mFlagPointRects.end())
+	{
+		*rect=result->second;
+		return true;
+	}
+	return false;
 }
 
 const TextEditor::Palette & TextEditor::GetDarkPalette()

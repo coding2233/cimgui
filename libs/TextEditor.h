@@ -184,6 +184,7 @@ public:
 		static const LanguageDefinition& Lua();
 	};
 
+
 	TextEditor();
 	~TextEditor();
 
@@ -269,6 +270,7 @@ public:
 
 	bool TextEditor::FindFlagLine(int lineIndex) const;
 	bool TextEditor::FindFlagPoint(int lineIndex) const;
+	bool TextEditor::FindFlagPointRect(int lineNo,ImVec4* rect) const;
 
 	static const Palette& GetDarkPalette();
 	static const Palette& GetLightPalette();
@@ -401,4 +403,6 @@ private:
 	std::vector<int> mFlagPoints;
 	const char* mFlagPointText;
 	const char* mFlagPointTipText;
+	
+	std::map<int,ImVec4> mFlagPointRects;
 };

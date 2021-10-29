@@ -48,6 +48,7 @@ CIMGUI_API void igSetReadOnlyTextEditor(TextEditor* text_editor,bool readOnly);
 CIMGUI_API void igSetShowWhitespacesTextEditor(TextEditor* text_editor,bool show);
 CIMGUI_API void igSetFlagLinesTextEditor(TextEditor* text_editor,int* lines,int size);
 CIMGUI_API void igSetFlagPointsTextEditor(TextEditor* text_editor,int* points,int size,const char* flagPointText,const char* flagPointTipText);
+CIMGUI_API bool igGetFlagPointRectTextEditor(TextEditor* text_editor,int lineNo,ImVec4* rect);
 CIMGUI_API void igCustomPaletteTextEditor(TextEditor* text_editor,unsigned int* colors,int size);
 CIMGUI_API void igIgnoreChildTextEditor(TextEditor* text_editor,bool ignore);
 CIMGUI_API TextEditor::Coordinates* igGetCursorPositionTextEditor(TextEditor* text_editor);
