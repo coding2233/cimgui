@@ -972,10 +972,10 @@ void TextEditor::Render()
 
 			if(FindFlagPoint(lineNo))
 			{
-				auto pStart = ImVec2(lineStartScreenPos.x + mTextStart - lineNoWidth-10, lineStartScreenPos.y);
-				auto pEnd = ImVec2(pStart.x+50,pStart.y+50);
+				auto pStart = ImVec2(lineStartScreenPos.x + mTextStart - lineNoWidth-mCharAdvance.x, lineStartScreenPos.y);
+				auto pEnd = ImVec2(pStart.x+mCharAdvance.x,pStart.y+mCharAdvance.y);
 				drawList->AddRectFilled(start, pEnd,mPalette[(int)PaletteIndex::LineNumber]);
-				 drawList->AddText(pStart, mPalette[(int)PaletteIndex::LineNumber], "?");
+				//  drawList->AddText(pStart, mPalette[(int)PaletteIndex::LineNumber], "?");
 				if(ImGui::IsMouseHoveringRect(pStart,pEnd))
 				{
 					ImGui::BeginTooltip();
