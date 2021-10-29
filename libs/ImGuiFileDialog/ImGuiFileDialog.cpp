@@ -4452,7 +4452,9 @@ IMGUIFILEDIALOG_API void IGFD_Selection_DestroyContent(IGFD_Selection* vSelectio
 IMGUIFILEDIALOG_API ImGuiFileDialog* IGFD_Create(void)
 {
 	setlocale(LC_ALL, ".UTF8");
+	#ifdef _WIN32
 	_wsetlocale(LC_ALL, L".UTF8");
+	#endif
 	return new ImGuiFileDialog();
 }
 
