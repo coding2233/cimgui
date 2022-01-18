@@ -11,6 +11,8 @@ CIMGUI_API bool ImGui_ImplGlfw_InitForVulkan(GLFWwindow* window,bool install_cal
 CIMGUI_API bool ImGui_ImplGlfw_InitForOther(GLFWwindow* window,bool install_callbacks);
 CIMGUI_API void ImGui_ImplGlfw_Shutdown();
 CIMGUI_API void ImGui_ImplGlfw_NewFrame();
+CIMGUI_API void ImGui_ImplGlfw_WindowFocusCallback(GLFWwindow* window,int focused);
+CIMGUI_API void ImGui_ImplGlfw_CursorEnterCallback(GLFWwindow* window,int entered);
 CIMGUI_API void ImGui_ImplGlfw_MouseButtonCallback(GLFWwindow* window,int button,int action,int mods);
 CIMGUI_API void ImGui_ImplGlfw_ScrollCallback(GLFWwindow* window,double xoffset,double yoffset);
 CIMGUI_API void ImGui_ImplGlfw_KeyCallback(GLFWwindow* window,int key,int scancode,int action,int mods);
@@ -36,6 +38,7 @@ CIMGUI_API bool ImGui_ImplSDL2_InitForOpenGL(SDL_Window* window,void* sdl_gl_con
 CIMGUI_API bool ImGui_ImplSDL2_InitForVulkan(SDL_Window* window);
 CIMGUI_API bool ImGui_ImplSDL2_InitForD3D(SDL_Window* window);
 CIMGUI_API bool ImGui_ImplSDL2_InitForMetal(SDL_Window* window);
+CIMGUI_API bool ImGui_ImplSDL2_InitForSDLRenderer(SDL_Window* window);
 CIMGUI_API void ImGui_ImplSDL2_Shutdown();
-CIMGUI_API void ImGui_ImplSDL2_NewFrame(SDL_Window* window);
+CIMGUI_API void ImGui_ImplSDL2_NewFrame();
 CIMGUI_API bool ImGui_ImplSDL2_ProcessEvent(const SDL_Event* event);
