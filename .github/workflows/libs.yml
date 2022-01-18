@@ -3,7 +3,7 @@ name: CI-FOR-MAIN
 on: 
   push:
     branches:
-      - libs
+      - libs*
 
 jobs:
   build-cimgui-libs-linux:
