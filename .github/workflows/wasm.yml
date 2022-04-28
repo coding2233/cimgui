@@ -1,0 +1,29 @@
+name: ImGui Wasm CI
+
+on:
+  push:
+    branches:
+      - wasm*
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup emsdk
+      run: |
+        git clone https://github.com/emscripten-core/emsdk.git
+        cd emsdk
+        git pull
+        ./emsdk install latest
+        ./emsdk activate latest
+        source ./emsdk_env.sh
+        cd ..
+        
+    - name: build
+      run: |
+        mkdir build
+        cd build
+        /home/runner/work/im
